@@ -1,0 +1,99 @@
+<html>
+
+<head>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 20px;
+        }
+
+        th {
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="text-align: center; background: green; color: white;">BE/B.Tech Colleges in India </h1>
+    <table style="width:100%">
+        <tr>
+            <th>CD Rank</th>
+            <th>Colleges</th>
+            <th>Course Fees</th>
+            <th>User Reviews</th>
+            <th>Action</th>
+   
+             
+            <% var len = stdatas.length %>
+            <% var mark = (stdatas[len-1].phy + stdatas[len-1].che + stdatas[len-1].math)/3 %>
+        
+      <% if(stdatas[len-1].jeemains > 90 && mark > 74) { %>
+
+        <% if(data.length>0){
+            data.forEach(function(row){
+            %>
+
+            <tr>
+                <td> #<%= row.rank %></td>
+                <td>
+                    <h3><a
+                            href="<%= row.link %>">
+                           <%= row.cname %></a></h3>
+                    <p><%= row.address %> | <%= row.state %></p>
+                </td>
+                <td>
+                    <h3> ₹<%= row.fees %></h3>
+                    <p>Law One Year Fees</p>
+                </td>
+                <td>
+                    <h3><%= row.reviews %>/10</h3>
+                    <p>Based On 181 Students Rating CLAIM THIS COLLEGE</p>
+                </td>
+                <td>
+                    <h3><a href="/lawcollege">Apply Now</a></h3>            </td>
+            </tr>
+            <%  })} %>
+           
+            <% }else { %>
+               
+
+                <% if(data.length>0){
+                    data.forEach(function(row){
+                    %>
+                    <% if(row.cat != "GOVERNMENT"){ %>
+                    <tr>
+                        <td> #<%= row.rank %></td>
+                        <td>
+                            <h3><a
+                                    href="https://collegedunia.com/university/26007-iit-kharagpur-indian-institute-of-technology-iitkgp-kharagpur">
+                                   <%= row.cname %></a></h3>
+                            <p><%= row.address %> | <%= row.state %></p>
+                        </td>
+                        <td>
+                            <h3> ₹<%= row.fees %></h3>
+                            <p>Law-First Year Fees</p>
+                        </td>
+                        <td>
+                            <h3><%= row.reviews %>/10</h3>
+                            <p>Based On 181 Students Rating CLAIM THIS COLLEGE</p>
+                        </td>
+                        <td>
+                            <h3><a href="/lawcollege">Apply Now</a></h3>            </td>
+                    </tr>
+                    <% } })} %>
+
+           <% } %>
+
+            
+
+    </table>
+</body>
+
+</html>

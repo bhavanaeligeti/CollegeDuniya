@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="https://cdn.ckeditor.com/4.9.1/standard/ckeditor.js"></script>
+ 
+</head>
+  <body style="background-image: url('banking.png'); background-size: cover; background-repeat: no-repeat; background-position: center center; height: 99vh;">
+        <nav class="navbar navbar-default" style="background: rgb(0, 100,0);">
+                <div class="container">
+                  <div class="navbar-header">
+                    <a class="navbar-brand" href="/" style="color: white;">College Dunia</a>
+                  </div>
+                  <h2 class="text-center"><b style="color:white">BE/B.TECH College</b></h2>
+              </nav>
+
+              <div class="container">
+                <div class="row">
+                  
+                    <div id="signupbox" style="margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <div class="panel-title">Techinal Details</div>
+                                 </div>  
+                            <div class="panel-body">
+                            <% if(msg !=''){ %>
+                              <p style="text-align: center">   <%= msg %></p>
+                              <% } %>
+                                <form action="/signup" id="EmployeeForm" class="form-horizontal" method="post"  role="form">
+                                    
+                                    <div id="signupalert" style="display:none" class="alert alert-danger">
+                                        <p>Error:</p>
+                                        <span></span>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="username" class="col-md-3 control-label">Branch</label>
+                                        <div class="col-md-9">
+                                           <select class="form-control" name="branch">
+                                               <option value="">Select Branch</option>
+                                               <option value="CSE">CSE</option>
+                                               <option value="MECHANICAL">MECHANICAL</option>
+                                               <option value="CIVIL">CIVIL</option>
+                                               <option value="IT">IT</option>
+                                              </select>
+                                        </div>
+                                    </div>
+                                        
+                                    <div class="form-group">
+                                        <label for="username" class="col-md-3 control-label">JEE MAINS</label>
+                                        <div class="col-md-9">
+                                            <input type="number" name="jeemains" maxlength="3" max="360" placeholder="marks"
+                                            pattern="[0-9]{1,}" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                          <label for="email" class="col-md-3 control-label">JEE ADVANCED</label>
+                                          <div class="col-md-9">
+                                              <input type="number" name="jeeadvanced" maxlength="3" max="360" placeholder="marks"
+                                              pattern="[0-9]{1,}" required>
+                                          </div>
+                                      </div>
+                                      
+                                    <div class="form-group">
+                                        <label for="password" class="col-md-3 control-label">PHYSICS</label>
+                                        <div class="col-md-9">
+                                            <input type="number" name="phy" maxlength="3" min="0" max="100" placeholder="marks"
+                                            pattern="[0-9]{1,}" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="password" class="col-md-3 control-label">CHEMISTRY</label>
+                                        <div class="col-md-9">
+                                            <input type="number" name="che" maxlength="3" min="0" max="100" placeholder="marks"
+                                            pattern="[0-9]{1,}" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="password" class="col-md-3 control-label">MATHEMATICS</label>
+                                        <div class="col-md-9">
+                                            <input type="number" name="math" maxlength="3" min="0" max="100" placeholder="marks"
+                                            pattern="[0-9]{1,}" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <!-- Button -->                                        
+                                        <div class="col-md-offset-3 col-md-9">
+                                        <input type="submit" name="submit" value="Check College" class="btn btn-primary">   
+                                        </div>
+                                    </div>
+                                    
+                            
+                                    
+                                    
+                                    
+                                </form>
+                             </div>
+                        </div>
+
+
+                        </div>
+                        </div>
+                        </div></body></html>

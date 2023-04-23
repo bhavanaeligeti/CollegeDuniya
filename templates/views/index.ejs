@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <!-- This is a popup url  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <!-- Popup url end  -->
+    <link rel="stylesheet" href="form.css" >
+    <link rel="stylesheet" href="search.css" >
+    <link rel="stylesheet" href="static/css/chat.css">
+    <link rel="stylesheet" href="static/css/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="form.js"></script>
+    <title>Colleges</title>
+
+  <!-- This is Popup Styles -->
+  <style media="screen">
+    @import url('https://fonts.googleapis.com/css?family=Lobster+Two:700|Poppins&display=swap');
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body{
+    background-image: url(sbm.jpeg);
+    background-size: cover;
+    /* background-position: center; */
+    box-sizing: border-box;
+    font-family: sans-serif;
+  }
+  
+  .center,.start-btn{
+     position: sticky; 
+    top: 50%;
+    left: 50%;
+    transform: translate(-5%, 6%);
+  }
+  .start-btn a{
+    /* font-size: 22px; */
+    background: green;
+    color: #02242b;
+    padding: 15px 18px;
+    border-radius: 5px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+  
+  }
+  .modal-box{
+    top: 40%;
+    opacity: 0;
+    visibility: hidden;
+    background: white;
+    height: auto;
+    width: 480px;
+    margin-top:140px;
+    padding: 18px 10px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 30px rgba(0,0,0,.2);
+  }
+  
+  .start-btn.show-modal{
+    opacity: 0;
+    visibility: hidden;
+  }
+  .modal-box.show-modal{
+    top: 50%;
+    opacity: 1;
+    visibility: visible;
+    transition: .4s;
+  }
+  .modal-box .fa-times{
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #0569d4;
+    height: 40px;
+    width: 40px;
+    line-height: 40px;
+    margin: 10px;
+  
+    color: white;
+    font-size: 18px;
+    border-radius: 100%;
+    text-align: center;
+    cursor: pointer;
+  }
+  .fa-times:hover{
+    font-size: 22px;
+  }
+  
+  
+  .form_container{
+    background: #fff;
+    padding: 30px;
+    margin-top: 20px;
+    border-radius: 3px;
+  }
+  
+  .form_container .form_item{
+    margin-bottom: 25px;
+  }
+  
+  .form_container .form_wrap.form_grp{
+    display: flex;
+  }
+  
+  .form_container .form_wrap.form_grp .form_item{
+    width: 50%;
+  }
+  
+  .form_container .form_wrap.form_grp .form_item:first-child{
+    margin-right: 4%;
+  }
+  
+  .form_container .form_item label{
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .form_container .form_item input,
+  .form_container .form_item select{
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #dadce0;
+    border-radius: 3px;
+  }
+   
+  .form_container .btn input[type="submit"]{
+    background: #6271f0;
+    border: 1px solid #6271f0;
+    padding: 10px;
+    width: 100%;
+    border-radius: 3px;
+    cursor: pointer;
+    color: #fff;
+  }
+
+  * {
+        box-sizing: border-box;
+      }
+      .openBtn {
+        display: flex;
+        justify-content: left;
+      }
+      .openButton {
+        border: none;
+        border-radius: 5px;
+        background-color: #1c87c9;
+        color: white;
+        padding: 14px 20px;
+        cursor: pointer;
+        position: fixed;
+      }
+      .loginPopup {
+        position: relative;
+        text-align: center;
+        width: 100%;
+      }
+      .formPopup {
+        display: none;
+        position: fixed;
+        left: 50%;
+        top: 25%;
+        transform: translate(-50%, 5%);
+        border: 3px solid #999999;
+        z-index: 9;
+      }
+      .formContainer {
+        max-width: 300px;
+        padding: 20px;
+        background-color: #fff;
+      }
+      .formContainer input[type=text],
+      .formContainer input[type=password] {
+        width: 100%;
+        padding: 15px;
+        margin: 5px 0 20px 0;
+        border: none;
+        background: #eee;
+      }
+      .formContainer input[type=text]:focus,
+      .formContainer input[type=password]:focus {
+        background-color: #ddd;
+        outline: none;
+      }
+      .formContainer .btn {
+        padding: 12px 20px;
+        border: none;
+        background-color: #8ebf42;
+        color: #fff;
+        cursor: pointer;
+        width: 100%;
+        margin-bottom: 15px;
+        opacity: 0.8;
+      }
+      .formContainer .cancel {
+        background-color: #cc0000;
+      }
+      .formContainer .btn:hover,
+      .openButton:hover {
+        opacity: 1;
+      }
+  </style>
+
+  <!-- Popup style End  -->
+
+</head>
+
+<body>
+  <div> 
+    
+  </div>
+  <div class="menu-bar">
+    <ul>
+       <li class="active navb" style="margin-right: 152px;"><a href="/about">Colleges</a></li>
+       
+       <li class="navb"><a href="#">B.Tech</a>
+       <div class="sub-menu-1">
+         <ul>
+           <li class="hover-me"><a href="/signup">Colleges</a> 
+          
+           
+           </li>
+           <li class="hover-me"><a href="#">Exam</a> 
+               <div class="sub-menu-2">
+                   <ul>
+                       <li><a href="/jee">JEE MAINS</a>  </li>
+                       <li><a href="/ajee">JEE ADVANCED</a> </li>
+                     </ul>
+   
+                </div>
+           </li>
+           
+         
+         </ul>
+       </div>
+   </li>
+       <li class="navb"><a href="#">MBA</a>
+           <div class="sub-menu-1">
+               <ul>
+                 <li class="hover-me"><a href="/mbasignup">Colleges</a> 
+                   
+               </li>
+                 <li class="hover-me"><a href="#">Exam</a>
+                   <div class="sub-menu-2">
+                       <ul>
+
+                           <li><a href="/cat">CAT</a>  </li>
+                           
+                         </ul>
+       
+                    </div>
+               </li>
+               
+                
+               </ul>
+             </div>
+       </li>
+       <li class="navb"><a href="#">MBBS</a>
+           <div class="sub-menu-1">
+               <ul>
+                 <li class="hover-me"><a href="/mbbsignup">Colleges</a>
+                   
+                 </li>
+                 <li class="hover-me"><a href="#">Exam</a>
+                   <div class="sub-menu-2">
+                       <ul>
+                           <li><a href="/neet">NEET</a>  </li>
+                           
+                         </ul>      
+                    </div>
+               </li>
+                 
+                 
+               </ul>
+             </div>
+       </li>
+       <li class="navb"><a href="#">LAW</a>
+           <div class="sub-menu-1">
+               <ul>
+                 <li class="hover-me"><a href="/lawsignup">Colleges</a>
+                </li>
+                 <li class="hover-me"><a href="#">Exam</a>
+                   <div class="sub-menu-2">
+                       <ul>
+                           <li><a href="/clat">CLAT</a>  </li>
+                          
+                            
+                         </ul>
+       
+                    </div>
+                </li>
+                 
+           
+               </ul>
+             </div>
+       </li>
+       
+
+       <li class="navb"><a href="#">Login</a>
+         <div class="sub-menu-1">
+          <ul>
+            <li class="hover-me"><a href="/blogin">B.Tech Student</a> 
+          </li>
+            <li class="hover-me"><a href="/mlogin">MBA Student</a>
+          </li>
+          <li class="hover-me"><a href="/dlogin">MBBS Student</a>
+          </li>
+          <li class="hover-me"><a href="/llogin">LAW Student</a>
+          </li>
+          </ul>
+         </div>
+       </button>
+           <!-- <div class="sub-menu-1">
+              <ul>
+               <li class="hover-me"><button style="background-color: green; color: white;" onclick="openForm()">Signin</button></li>
+              </ul>
+           </div> -->
+       </li>
+       <!-- <li class="enquery"><i class="fa fa-users"></i>
+        <div class="start-btn">
+    
+          <a href="#">Enquiry</a>
+       </div> -->
+      
+       </li>
+    </ul>
+   </div>
+    
+
+
+ <!-- This is a popup Registration page  -->
+
+ <div class="popup">
+  <!-- <% if(msg !='' ){ %>
+    <p style="text-align: center; color: red; margin-top: 100px;">
+        <%= msg %>
+    </p>
+    <% } %> -->
+  <!-- <div class="start-btn">
+    
+    <a href="#">Enquiry</a>
+ </div> -->
+ <div class="center modal-box">
+
+    <div class="fas fa-times"></div>
+
+
+
+<div class="form_container">
+<form action="/register" name="form"  method="post">
+  
+ <div class="form_wrap form_grp">
+     <div class="form_item" name="fname">
+         <label  name="fname">First Name</label>
+         <input type="text" name="fname" maxlength="15" placeholder="first name">
+
+     </div>
+     <div class="form_item">
+         <label>Last Name</label>
+         <input type="text" name="lname" placeholder="last Name" maxlength="12">
+
+     </div>
+ </div>
+ <div class="form_wrap">
+     <div class="form_item">
+         <label >Email Address</label>
+         <input type="text"  name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="email address">
+
+     </div>
+ </div>
+
+ <div class="form_wrap">
+     <div class="form_item">
+         <label for="phone">Phone</label>
+         <input type="text" id="phone"  name="pnumber" maxlength="10" pattern="[1-9]{1}[0-9]{9}" placeholder="xxxxxxxxxx">
+         <div class="error" id="phone"></div>
+     </div>
+ </div>
+
+ <div class="form_wrap">
+  <div class="form_item">
+      <label for="text">Enquery</label>
+      <input type="text" id="phone"  name="feedback" placeholder="Please Enter Your questions">
+      <div class="error" id="phone"></div>
+  </div>
+</div>
+
+ <div class="btn">
+   <input type="submit" id="btn2" value="Enquiry">
+ </div>
+</form>
+</div>
+</div>
+
+ </div>
+
+
+
+ <!-- CHAT BAR BLOCK -->
+ <div class="chat-bar-collapsible">
+  <button id="chat-button" type="button" class="collapsible">Chat with us!
+      <i id="chat-icon" style="color: #fff;" class="fa fa-fw fa-comments-o"></i>
+  </button>
+
+  <div class="content">
+      <div class="full-chat-block">
+          <!-- Message Container -->
+          <div class="outer-container">
+              <div class="chat-container">
+                  <!-- Messages -->
+                  <div id="chatbox">
+                      <h5 id="chat-timestamp"></h5>
+                      <p id="botStarterMessage" class="botText"><span>Loading...</span></p>
+                  </div>
+
+                  <!-- User input box -->
+                  <div class="chat-bar-input-block">
+                      <div id="userInput">
+                          <input id="textInput" class="input-box" type="text" name="msg"
+                              placeholder="Tap 'Enter' to send a message">
+                          <p></p>
+                      </div>
+
+                      <div class="chat-bar-icons">
+                          <i id="chat-icon" style="color: crimson;" class="fa fa-fw fa-heart"
+                              onclick="heartButton()"></i>
+                          <i id="chat-icon" style="color: #333;" class="fa fa-fw fa-send"
+                              onclick="sendButton()"></i>
+                      </div>
+                  </div>
+
+                  <div id="chat-bar-bottom">
+                      <p></p>
+                  </div>
+
+              </div>
+          </div>
+
+      </div>
+  </div>
+
+</div>
+
+<div></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="static/scripts/responses.js"></script>
+<script src="static/scripts/chat.js"></script>
+
+
+ <script>
+
+function openForm() {
+        document.getElementById("popupForm").style.display = "block";
+      }
+      function closeForm() {
+        document.getElementById("popupForm").style.display = "none";
+      }
+
+  $(document).ready(function(){
+    $('.start-btn').click(function(){
+      $('.modal-box').toggleClass("show-modal");
+      $('.start-btn').toggleClass("show-modal");
+    });
+    $('.fa-times').click(function(){
+      $('.modal-box').toggleClass("show-modal");
+      $('.start-btn').toggleClass("show-modal");
+    });
+  });
+</script>
+</body>
+</html>

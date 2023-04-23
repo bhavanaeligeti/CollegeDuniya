@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!----======== CSS ======== -->
+
+  <!----===== Boxicons CSS ===== -->
+  <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="https://cdn.ckeditor.com/4.9.1/standard/ckeditor.js"></script>
+
+  <!--<title>Dashboard Sidebar Menu</title>-->
+  <link rel="stylesheet" href="navbar_css.css">
+  <style>
+    .student-profile .card .card-header .profile_img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      margin: 10px auto;
+      border: 10px solid #ccc;
+      border-radius: 50%;
+    }
+
+    .student-profile .card h3 {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .student-profile .card p {
+      font-size: 16px;
+      color: #000;
+    }
+
+    .student-profile .table th,
+    .student-profile .table td {
+      font-size: 14px;
+      padding: 5px 10px;
+      color: #000;
+    }
+
+    @import url('https://fonts.googleapis.com/css?family=Lobster+Two:700|Poppins&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: white;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .center,
+    .start-btn {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .start-btn a {
+      font-size: 22px;
+      background: green;
+      color: #02242b;
+      padding: 15px 18px;
+      border-radius: 5px;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 1px;
+
+    }
+
+    .modal-box {
+      top: 40%;
+      opacity: 0;
+      visibility: hidden;
+      background: white;
+      height: auto;
+      width: 480px;
+      margin-top: 140px;
+      padding: 18px 10px;
+      border-radius: 5px;
+      box-shadow: 5px 5px 30px rgba(0, 0, 0, .2);
+    }
+
+    .start-btn.show-modal {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .modal-box.show-modal {
+      top: 50%;
+      opacity: 1;
+      visibility: visible;
+      transition: .4s;
+    }
+
+    .modal-box .fa-times {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: #0569d4;
+      height: 40px;
+      width: 40px;
+      line-height: 40px;
+      margin: 10px;
+
+      color: white;
+      font-size: 18px;
+      border-radius: 100%;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .fa-times:hover {
+      font-size: 22px;
+    }
+
+
+    .form_container {
+      background: #fff;
+      padding: 30px;
+      margin-top: 20px;
+      border-radius: 3px;
+    }
+
+    .form_container .form_item {
+      margin-bottom: 25px;
+    }
+
+    .form_container .form_wrap.form_grp {
+      display: flex;
+    }
+
+    .form_container .form_wrap.form_grp .form_item {
+      width: 50%;
+    }
+
+    .form_container .form_wrap.form_grp .form_item:first-child {
+      margin-right: 4%;
+    }
+
+    .form_container .form_item label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .form_container .form_item input,
+    .form_container .form_item select {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #dadce0;
+      border-radius: 3px;
+    }
+
+    .form_container .btn input[type="submit"] {
+      background: #6271f0;
+      border: 1px solid #6271f0;
+      padding: 10px;
+      width: 100%;
+      border-radius: 3px;
+      cursor: pointer;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="sidebar">
+    <header>
+      <div class="image-text">
+        <span class="image">
+          <!--<img src="logo.png" alt="">-->
+        </span>
+
+        <div class="text logo-text">
+          <span class="name"><a href="#">Dashboard</a></span>
+          
+        </div>
+      </div>
+
+
+      <!-- <i class='bx bx-chevron-right toggle'></i> -->
+    </header>
+
+    <div class="menu-bar">
+      <div class="menu">
+
+
+        <ul class="menu-links">
+
+          <li class="nav-link">
+            <a href="#Dashboard" onclick="dashboard()">
+              <i class='bx bx-home-alt icon'></i>
+              <span class="text nav-text">Personal details</span>
+            </a>
+          </li>
+
+
+          <li class="nav-link">
+            <a href="#Updates" onclick="updates()">
+              <i class='bx bx-bell icon'></i>
+              <span class="text nav-text">Enquiry</span>
+            </a>
+          </li>
+
+          <li class="nav-link">
+            <a href="#Marksheet" onclick="Marksheet()">
+              <i class='bx bx-bell icon'></i>
+              <span class="text nav-text">Your Enquries</span>
+            </a>
+          </li>
+
+        </ul>
+      </div>
+
+
+
+      <div class="bottom-content">
+        <li class="">
+          <a href="/logout">
+            <i class='bx bx-log-out icon'></i>
+            <span class="text nav-text">Logout</span>
+          </a>
+        </li>
+
+      </div>
+    </div>
+  </nav>
+
+  <section class="home" style='background-image:url("learn-html.png");'>
+    <div class="text"><%= udata.fname %></div>
+    <div id="Dashboard" class="collpase">
+      <div style="text-align: center; background: azure;">
+
+        <div class="student-profile py-4">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="card shadow-sm">
+                  <div class="card-header bg-transparent text-center">
+                    <img class="profile_img" src="student.jpg" alt="student dp" />
+                    <h3>
+                      <%= udata.name %>
+                    </h3>
+                  </div>
+                  <div class="card-body">
+                    
+                    <p class="mb-0"><strong class="pr-1">College : </strong>
+                      <%= udata.college %>
+                    </p>
+                    <p class="mb-0"><strong class="pr-1">Status : </strong>
+                      <% if(udata.stuid == 0){ %>
+                            <b style="color:green">Alloted</b>
+                        <% } else if(udata.stuid ==2){ %>
+                          <b style="color:red">Rejected</b> 
+                          <h1 style="color:red">You are not eligible</h1>
+                        <% } else{ %>
+                          <b style="color:blue">Pending</b> 
+                          <% } %>
+                      </p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-12" style="margin: 25px;">
+                <div class="card shadow-sm">
+                  <div class="card-header bg-transparent border-0">
+                    <h3 class="mb-0">
+
+                    </h3>
+                  </div>
+                  <div class="card-body pt-0">
+                    <table class="table table-bordered">
+                      <tr>
+                        <th width="30%">First Name</th>
+                        <td width="2%">:</td>
+                        <td>
+                          <%= udata.fname %>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th width="30%">Last Name</th>
+                        <td width="2%">:</td>
+                        <td>
+                          <%= udata.lname %>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th width="30%">Email Id</th>
+                        <td width="2%">:</td>
+                        <td>
+                          <%= udata.email %>
+                        </td>
+                      </tr>
+                     
+                      <tr>
+                        <th width="30%">Course</th>
+                        <td width="2%">:</td>
+                        <td>
+                           B.Tech 
+                        </td>
+                      </tr>
+                  
+
+                      <tr>
+                        <th width="30%">Jee Mains Marks</th>
+                        <td width="2%">:</td>
+                        <td>
+                          <%= udata.jeemains%>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <th width="30%">Jee advanced Marks</th>
+                        <td width="2%">:</td>
+                        <td>
+                          <%= udata.jeeadvanced%>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <th width="30%">Physics Marks</th>
+                        <td width="2%">:</td>
+                        <td>
+                          <%= udata.phy%>
+                        </td>
+                      </tr>
+      
+                      <tr>
+                        <th width="30%">Chemistry Marks</th>
+                        <td width="2%">:</td>
+                        <td>
+                          <%= udata.che%>
+                        </td>
+                      </tr>
+
+
+                      <tr>
+                        <th width="30%">Mathematics Marks</th>
+                        <td width="2%">:</td>
+                        <td>
+                          <%= udata.math%>
+                        </td>
+                      </tr>
+             
+                      <tr>
+                        <th width="30%">Class X Board</th>
+                        <td width="2%">:</td>
+                        <td>
+                          <%= udata.ClassX_Board%>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <th width="30%">Class X Percentage
+                        </th>
+                        <td width="2%">:</td>
+                        <td>
+                          <%= udata.ClassX_Percentage
+                          %>%
+                        </td>
+                      </tr>
+      
+                      <tr>
+                        <th width="30%">Class XII Board / College</th>
+                        <td width="2%">:</td>
+                        <td>
+                          <%= udata.ClassXII_Board %>
+                        </td>
+                      </tr>
+
+
+                      <tr>
+                        <th width="30%">Class XII Percentage</th>
+                        <td width="2%">:</td>
+                        <td>
+                          <%= udata.ClassXII_Percentage %>%
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <th width="30%">Mobile Number</th>
+                        <td width="2%">:</td>
+                        <td>
+                          <%= udata.mnumber %>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th width="30%">Gender</th>
+                        <td width="2%">:</td>
+                        <td>
+                          <%= udata.gender %>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <th width="30%">Address</th>
+                        <td width="2%">:</td>
+                        <td>
+                          <%= udata.address %>
+                        </td>
+                      </tr>
+                      
+                      <tr>
+                        <th width="30%">State</th>
+                        <td width="2%">:</td>
+                        <td>
+                          <%= udata.state %>
+                        </td>
+                      </tr>
+               
+                      <tr>
+                        <th width="30%">City</th>
+                        <td width="2%">:</td>
+                        <td>
+                          <%= udata.city %>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <th width="30%">Pincode</th>
+                        <td width="2%">:</td>
+                        <td>
+                          <%= udata.pincode %>
+                        </td>
+                      </tr>
+
+                    </table>
+                  </div>
+                </div>
+                <div style="height: 26px"></div>
+                <div class="card shadow-sm">
+                  <div class="card-header bg-transparent border-0">
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+    <div id="Account_detail" class="collpase">
+
+      <div class="container" style="background: azure; padding:100px">
+       
+    </div>
+
+
+    </div>
+
+    <div id="Marksheet" class="collpase">
+     <div class="container">
+    <div class="row" style="background-color: white;">
+        <h1 >Total Enquries</h1>
+        <br>
+     <table class="table table-striped table-primary">
+      <thead>
+        <tr>
+          <th>Enquery</th>
+          <th>Answer</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+       <% if(data.length>0){
+        data.forEach(function(row){
+        %>
+        <tr>
+          <form action="/reply" method="post">
+          <td><%= row.feedback %></td>
+          <td><%= row.reply %></td>
+         
+          
+        </form>
+        </tr>
+        
+       
+        <%    
+      })} %>
+      </tbody>
+    </table>
+  
+  
+  </div>
+      </div>
+    </div>
+
+    <div id="Updates" class="collpase">
+      <!-- <h1 style="text-align: center; color: red;"></h1> -->
+      <div class="form_container" style="margin: 100px;">
+        <form action="/register" name="form"  method="post">
+          
+         <div class="form_wrap form_grp">
+             <div class="form_item" name="fname">
+                 <label  name="fname">First Name</label>
+                 <input type="hidden" name="fname" value="<%= udata.fname %>">
+                 <input type="text" name="fname" maxlength="15" value="<%= udata.fname %>" disabled>
+        
+             </div>
+             <div class="form_item">
+                 <label>Last Name</label>
+                 <input type="hidden" name="lname" value="<%= udata.lname %>"> 
+                 <input type="text" name="lname" value="<%= udata.lname %>" maxlength="12" disabled>
+        
+             </div>
+         </div>
+         <div class="form_wrap">
+             <div class="form_item">
+                 <label >Email Address</label>
+                 <input type="hidden" name="email" value="<%= udata.email %>"> 
+                 <input type="text"    value="<%= udata.email %>" disabled>
+        
+             </div>
+         </div>
+        
+         <div class="form_wrap">
+             <div class="form_item">
+                 <label for="phone">Phone</label>
+                 <input type="hidden" id="phone" name="pnumber" value="<%= udata.mnumber %>">
+                 <input type="text" id="phone"  value="<%= udata.mnumber%>" disabled>
+                 
+             </div>
+         </div>
+        
+         <div class="form_wrap">
+          <div class="form_item">
+              <label for="text">Enquery</label>
+              <input type="text" id="phone"  name="feedback" placeholder="Please Enter Your questions">
+              <div class="error" id="phone"></div>
+          </div>
+        </div>
+        
+         <div class="btn">
+           <input type="submit" id="btn2" value="Enquiry">
+         </div>
+        </form>
+        </div>
+    </div>
+
+  </section>
+
+
+
+  <script>
+    const body = document.querySelector('body'),
+      sidebar = body.querySelector('nav'),
+      toggle = body.querySelector(".toggle"),
+      searchBtn = body.querySelector(".search-box"),
+      modeSwitch = body.querySelector(".toggle-switch"),
+      modeText = body.querySelector(".mode-text");
+
+    toggle.addEventListener("click", () => {
+      sidebar.classList.toggle("close");
+    })
+
+
+
+    searchBtn.addEventListener("click", () => {
+      sidebar.classList.remove("close");
+    })
+
+
+
+    modeSwitch.addEventListener("click", () => {
+      body.classList.toggle("dark");
+
+      if (body.classList.contains("dark")) {
+        modeText.innerText = "Light mode";
+      } else {
+        modeText.innerText = "Dark mode";
+
+      }
+    });
+
+    function dashboard() {
+      document.getElementById("Dashboard").classList.add('collpase-open');
+      document.getElementById("Dashboard").classList.remove('collpase');
+      document.getElementById("Marksheet").classList.remove('collpase-open');
+      document.getElementById("Marksheet").classList.add('collpase');
+      document.getElementById("Account_detail").classList.remove('collpase-open');
+      document.getElementById("Account_detail").classList.add('collpase');
+      document.getElementById("Updates").classList.remove('collpase-open');
+      document.getElementById("Updates").classList.add('collpase');
+
+    }
+
+    function visibility() {
+      document.getElementById("Account_detail").classList.add('collpase-open');
+      document.getElementById("Account_detail").classList.remove('collpase');
+      document.getElementById("Marksheet").classList.remove('collpase-open');
+      document.getElementById("Marksheet").classList.add('collpase');
+      document.getElementById("Dashboard").classList.remove('collpase-open');
+      document.getElementById("Dashboard").classList.add('collpase');
+      document.getElementById("Updates").classList.remove('collpase-open');
+      document.getElementById("Updates").classList.add('collpase');
+    }
+
+    function Marksheet() {
+
+      document.getElementById("Marksheet").classList.add('collpase-open');
+      document.getElementById("Marksheet").classList.remove('collpase');
+      document.getElementById("Account_detail").classList.remove('collpase-open');
+      document.getElementById("Account_detail").classList.add('collpase');
+      document.getElementById("Dashboard").classList.remove('collpase-open');
+      document.getElementById("Dashboard").classList.add('collpase');
+      document.getElementById("Updates").classList.remove('collpase-open');
+      document.getElementById("Updates").classList.add('collpase');
+
+    }
+    function updates() {
+      document.getElementById("Updates").classList.add('collpase-open');
+      document.getElementById("Updates").classList.remove('collpase');
+      document.getElementById("Marksheet").classList.remove('collpase-open');
+      document.getElementById("Marksheet").classList.add('collpase');
+      document.getElementById("Dashboard").classList.remove('collpase-open');
+      document.getElementById("Dashboard").classList.add('collpase');
+      document.getElementById("Account_detail").classList.remove('collpase-open');
+      document.getElementById("Account_detail").classList.add('collpase');
+
+    }
+
+  </script>
+
+
+
+</body>
+
+</html>
